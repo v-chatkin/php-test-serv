@@ -1,0 +1,24 @@
+runtime: php55
+api_version: 1
+
+env_variables:
+    MYSQL_USER: root
+    MYSQL_PASSWORD: 'root'
+    MYSQL_DSN: mysql:unix_socket=/cloudsql/sodium-port-246508:europe-west6:example-site-bd;dbname=example_news
+
+beta_settings:
+    cloud_sql_instances: sodium-port-246508:europe-west6:example-site-bd
+
+handlers:
+-   url: /main*
+    script: index.php
+-   url: /get_site_info*
+    script: get_site_info.php
+-   url: /get_news*
+    script: get_news_list.php
+-   url: /add_news*
+    script: add_news.php
+-   url: /update_news*
+    script: update_news.php
+-   url: /del_news*
+    script: del_news.php
